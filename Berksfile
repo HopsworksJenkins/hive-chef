@@ -4,12 +4,12 @@ source 'https://supermarket.chef.io'
 metadata
 
 cookbook 'java'
-cookbook 'kagent', github: "logicalclocks/kagent-chef", branch: "master"
-cookbook 'hops', github: "logicalclocks/hops-hadoop-chef", branch: "master"
-cookbook 'ndb', github: "logicalclocks/ndb-chef", branch: "master"
-cookbook 'conda', github: "logicalclocks/conda-chef", branch: "master"
+cookbook 'kagent', github: "hopsworksjenkins/kagent-chef", branch: "77-ee"
+cookbook 'hops', github: "hopsworksjenkins/hops-hadoop-chef", branch: "77-ee"
+cookbook 'ndb', github: "hopsworksjenkins/ndb-chef", branch: "77-ee"
+cookbook 'conda', github: "hopsworksjenkins/conda-chef", branch: "77-ee"
 
-cookbook 'kzookeeper', github: "logicalclocks/kzookeeper", branch: "master"
+cookbook 'kzookeeper', github: "hopsworksjenkins/kzookeeper", branch: "77-ee"
 cookbook 'compat_resource', '~> 12.7.3'
 cookbook 'ulimit', '~> 0.4.0'
 cookbook 'authbind', '~> 0.1.10'
