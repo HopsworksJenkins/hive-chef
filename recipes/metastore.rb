@@ -109,3 +109,16 @@ if conda_helpers.is_upgrade
     action :systemd_reload
   end
 end
+
+# Register Hive metastore with Consul
+template "#{node['hive2']['consul']}/metastore-health.sh" do
+  source "consul/metastore-health.sh.erb"
+  owner node['hive2']['user']
+  group node['hops']['group']
+  mode 0750
+end
+
+consul_service "Registering Hive metastore with Consul" do
+  service_definition "consul/metastore-consul.hcl.erb"
+  action :register
+end
