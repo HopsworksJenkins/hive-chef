@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-curl --fail --silent http://$HOSTNAME:<%= node['hive2']['hs2']['metrics_port'] %> > /dev/null 2>&1
