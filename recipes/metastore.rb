@@ -1,5 +1,24 @@
 include_recipe "hive2::_configure"
 
+unless exists_local("hive2", "server2")
+  # User certs must belong to hive group to be able to rotate x509 material
+  group node['hive2']['group'] do
+    action :modify
+    members node['kagent']['certs_user']
+    append true
+    not_if { node['install']['external_users'].casecmp("true") == 0 }
+  end
+
+  crypto_dir = x509_helper.get_crypto_dir(node['hive2']['user-home'])
+  kagent_hopsify "Generate x.509" do
+    user node['hive2']['user']
+    group node['hive2']['group']
+    crypto_directory crypto_dir
+    action :generate_x509
+    not_if { conda_helpers.is_upgrade || node["kagent"]["test"] == true }
+  end
+end
+
 private_ip = my_private_ip()
 public_ip = my_public_ip()
 
@@ -17,7 +36,7 @@ end
 
 bash "set_warehouse_storage_type" do
   user node['hops']['hdfs']['user']
-  group node['hops']['group']
+  group node['hops']['hdfs']['group']
   code <<-EOH
     #{node['hops']['bin_dir']}/hdfs storagepolicies -setStoragePolicy -path #{node['hive2']['hopsfs_dir']}/warehouse -policy DB
   EOH

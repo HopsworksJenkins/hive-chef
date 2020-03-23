@@ -9,7 +9,7 @@ group node['hive2']['group'] do
 end
 
 user node['hive2']['user'] do
-  home "/home/#{node['hive2']['user']}"
+  home node['hive2']['user-home']
   action :create
   shell "/bin/bash"
   manage_home true
@@ -19,19 +19,6 @@ user node['hive2']['user'] do
 end
 
 group node['hive2']['group'] do
-  action :modify
-  members node['hive2']['user']
-  append true
-  not_if { node['install']['external_users'].casecmp("true") == 0 }
-end
-
-group node['kagent']['certs_group'] do
-  action :create
-  not_if "getent group #{node['kagent']['certs_group']}"
-  not_if { node['install']['external_users'].casecmp("true") == 0 }
-end
-
-group node['kagent']['certs_group'] do
   action :modify
   members node['hive2']['user']
   append true
