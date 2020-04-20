@@ -37,6 +37,10 @@ attribute "hive2/group",
           :description => "User to install/run as",
           :type => 'string'
 
+attribute "hive2/user-home",
+          :description => "Home directory of hive user",
+          :type => 'string'
+
 attribute "hive2/dir",
           :description => "base dir for installation",
           :type => 'string'
