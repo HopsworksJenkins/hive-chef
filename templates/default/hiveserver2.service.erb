@@ -1,6 +1,7 @@
 [Unit]
 Description = Hive metaserver
 After = syslog.target network.target remote-fs.target <%= @deps %>
+Requisite = <%= @deps %>
 
 [Service]
 User = <%= node['hive2']['user'] %>
