@@ -3,12 +3,12 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'kagent', github: "logicalclocks/kagent-chef", branch: "master"
-cookbook 'hops', github: "logicalclocks/hops-hadoop-chef", branch: "master"
-cookbook 'ndb', github: "logicalclocks/ndb-chef", branch: "master"
-cookbook 'conda', github: "logicalclocks/conda-chef", branch: "master"
-cookbook 'kzookeeper', github: "logicalclocks/kzookeeper", branch: "master"
-cookbook 'consul', github: "logicalclocks/consul-chef", branch: "master"
-cookbook 'ulimit', github: "logicalclocks/chef-ulimit", branch: "master"
+cookbook 'kagent', github: "hopsworksjenkins/kagent-chef", branch: "508"
+cookbook 'hops', github: "hopsworksjenkins/hops-hadoop-chef", branch: "508"
+cookbook 'ndb', github: "hopsworksjenkins/ndb-chef", branch: "508"
+cookbook 'conda', github: "hopsworksjenkins/conda-chef", branch: "508"
+cookbook 'kzookeeper', github: "hopsworksjenkins/kzookeeper", branch: "508"
+cookbook 'consul', github: "hopsworksjenkins/consul-chef", branch: "508"
+cookbook 'ulimit', github: "hopsworksjenkins/chef-ulimit", branch: "508"
 
 
